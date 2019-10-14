@@ -1,20 +1,32 @@
+/* implementing strcmp using dynamic memory allocation in C */
+/* Author : Kautuk Raj */
 #include <stdio.h>
 #include <stdlib.h>
-int main()
+void my_strcat(); // function prototype
+
+void my_strcat()
 {
-    int i=0,flag=0;
-    char *p1 = (char*) malloc (255*sizeof(char));
-    char *p2 = (char*) malloc (255*sizeof(char));
-    scanf("%[^' '] %s",p1,p2);
-    while (*(p1+i)!='\0' || *(p2+i)!='\0')
+    int i = 0, flag = 0;
+    char* p1 = (char*)malloc(255 * sizeof(char)); /* allocating char pointer of size 255 to implement string */
+    char* p2 = (char*)malloc(255 * sizeof(char));
+    scanf("%[^' '] %s", p1, p2);
+    while (*(p1 + i) != '\0' || *(p2 + i) != '\0') /* till we reach the end of the string */
     {
-        if (*(p1+i)!=*(p2+i))
-        {flag=1;break;}
+        if (*(p1 + i) != *(p2 + i)) /* checking if each char position element is equal or not */
+        {
+            flag = 1;
+            break;
+        }
         i++;
     }
-    printf("%d\n",flag);
-    free(p1);
+    printf("%d\n", flag);
+    free(p1); /* freeing up the memory space allocated */
     free(p2);
+}
+
+int main()
+{
+    my_strcat(); // calling the function
     return 0;
 }
 

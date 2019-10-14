@@ -2,6 +2,8 @@
 /* Author : Kautuk Raj */
 #include <stdio.h>
 #include <stdlib.h>
+int my_own_strlen(char*); // function prototype
+void my_strcat();
 
 int my_own_strlen(char* p) /* implementing a function to find the length of string passed into it */
 {
@@ -11,15 +13,16 @@ int my_own_strlen(char* p) /* implementing a function to find the length of stri
     return l; /* returning length */
 }
 
-int main()
+void my_strcat()
 {
-    int i =0, j = 0, k = 0;
+    int i = 0, j = 0, k = 0;
     char* p1 = (char*)malloc(255 * sizeof(char)); /* allocating a size of 255 to char pointer */
     char* p2 = (char*)malloc(255 * sizeof(char));
     scanf("%[^' '] %s", p1, p2); /* reading formatted input from console */
     int l1 = my_own_strlen(p1); /* finding length of string */
     int l2 = my_own_strlen(p2);
-    char* p3 = (char*)malloc(l1 + l2 + 1); /* allocating memory to new char pointer to store the concatenated string*/
+    char* p3 = (char*)malloc(
+        l1 + l2 + 1); /* allocating memory to new char pointer to store the concatenated string*/
 
     while (i < l1)
     {
@@ -40,6 +43,10 @@ int main()
     free(p1);
     free(p2);
     free(p3); /* freeing up the allocated memory */
-    return 0;
 }
 
+int main()
+{
+    my_strcat();
+    return 0;
+}
